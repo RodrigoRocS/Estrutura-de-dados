@@ -25,7 +25,7 @@ void limparBufferEntrada()
 int main()
 {
     printf("Vamos cadastrar os 5 territorios iniciais do nosso mundo: \n");
-    do
+    do // inicia cadastro dos territorios
     {
         printf("\n--- Cadastrando Territorio %d ---\n", numTerritorio + 1);
 
@@ -40,16 +40,18 @@ int main()
 
         limparBufferEntrada();
 
-        numTerritorio++;
+        numTerritorio++; // incrementa o loop
 
     } while (numTerritorio < 5);
+
+    // exibe territorios cadastrados
 
     printf("\n=== Territorios cadastrados ===\n");
     for (int i = 0; i < 5; i++)
     {
         printf("\n--- Territorio %d ---\n", i + 1);
-        printf("Nome: %s\n", territorios[i].nome);
-        printf("Cor: %s\n", territorios[i].cor);
+        printf("Nome: %s", territorios[i].nome);
+        printf("Cor: %s", territorios[i].cor);
         printf("Tropas: %d\n", territorios[i].tropas);
     }
 
