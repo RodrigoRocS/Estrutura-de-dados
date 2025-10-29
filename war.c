@@ -9,6 +9,49 @@ typedef struct // Define struct do territorio
     int tropas;
 } Territorio;
 
+// ---- Protótipo das funções ----
+void limpaBuffer();
+void cadastraMapas(Territorio *t);
+void exibeMapa(Territorio *t);
+int rolarDado();
+void faseDeAtaque(Territorio *t);
+void atribuirMissao(char *destino, char *missoes[], int totalMissoes);
+
+int main()
+
+{
+    char (*missoes)[50] = malloc(6 * sizeof(char[50]));
+    strcpy(missoes[0], "Conquistar 1 territorio");
+    strcpy(missoes[1], "Conquistar 2 territorios.");
+    strcpy(missoes[2], "Conquistar todos os territorios.");
+    strcpy(missoes[3], "Eliminar o exercito VERMELHO");
+    strcpy(missoes[4], "Eliminar o exercito VERDE e AZUL");
+    strcpy(missoes[5], "Conquistar 3 territorios.");
+
+    Territorio *t = (Territorio *)calloc(5, sizeof(Territorio)); // alocação dinamica.
+    if (t == NULL || missoes == NULL)                            // verifica se a alocação deu certo
+    {
+        printf("Erro na alocação de memória!\n");
+        return 1;
+    }
+
+    cadastraMapas(t); // inicia cadastro de mapas
+
+    exibeMapa(t); // exibe territorios
+
+    faseDeAtaque(t); // inicia fase de ataque
+
+    free(t); // libera memoria alocada
+
+    return 0;
+}
+
+void atribuirMissao(char *destino, char (*missoes)[50], int totalMissoes)
+{
+    int indice = rand() % totalMissoes;
+    strcpy(destino, missoes[indice]);
+}
+
 void limpaBuffer() // Limpa buffer de entrada
 {
     int c;
@@ -126,26 +169,4 @@ void faseDeAtaque(Territorio *t)
         continuar = getchar();
         exibeMapa(t);
     } while (continuar == '\n');
-}
-
-int main()
-
-{
-
-    Territorio *t = (Territorio *)calloc(5, sizeof(Territorio)); // alocação dinamica.
-    if (t == NULL)                                               // verifica se a alocação deu certo
-    {
-        printf("Erro na alocação de memória!\n");
-        return 1;
-    }
-
-    cadastraMapas(t); // inicia cadastro de mapas
-
-    exibeMapa(t); // exibe territorios
-
-    faseDeAtaque(t); // inicia fase de ataque
-
-    free(t); // libera memoria alocada
-
-    return 0;
 }
