@@ -66,7 +66,7 @@ void cadastroItem(Item *it, struct No **mochila)
     } while (numItens < 10);
 };
 
-void listarItens(struct No *inicio)
+void listarItens(struct No *inicio) // lista todos os itens cadastrados
 {
     if (inicio == NULL)
     {
@@ -85,7 +85,7 @@ void listarItens(struct No *inicio)
     };
 };
 
-void buscaItem(struct No *inicio, char *nome)
+void buscaItem(struct No *inicio, char *nome) // busca item por nome
 {
     if (inicio == NULL)
     {
@@ -111,7 +111,7 @@ void buscaItem(struct No *inicio, char *nome)
     }
 };
 
-void removerPorNome(struct No **inicio, char *nome)
+void removerPorNome(struct No **inicio, char *nome) // remove item por nome
 {
     if (*inicio == NULL)
     {
