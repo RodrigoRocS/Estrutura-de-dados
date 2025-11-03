@@ -70,3 +70,28 @@ void mostrarFila(Fila *f)
     }
     printf("\n");
 }
+
+int main()
+{
+    Fila f;
+    inicializarFila(&f); // inicializa fila
+    // insere pessoas na fila
+    Pessoa p1 = {"João", 25};
+    Pessoa p2 = {"Maria", 30};
+    Pessoa p3 = {"Tamires", 35};
+    inserir(&f, p1);
+    inserir(&f, p2);
+    mostrarFila(&f); // mostrar fila antes de remover
+    // remove pessoa da fila
+    Pessoa removida;
+    remover(&f, &removida);
+    printf("Pessoa removida: %s, %d\n", removida.nome, removida.idade);
+    mostrarFila(&f); // mostra após remoção
+    inserir(&f, p3);
+    mostrarFila(&f);
+    remover(&f, &removida);
+    printf("Pessoa removida: %s, %d\n", removida.nome, removida.idade);
+    mostrarFila(&f);
+
+    return 0;
+}
