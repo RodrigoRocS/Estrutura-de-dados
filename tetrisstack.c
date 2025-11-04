@@ -143,11 +143,11 @@ void exibeMenu(Fila *f)
 {
     int opcao;
     Peca pecaRemovida;
+    printf("*** TETRIS STACK ***\n");
 
     do
     {
         printf("\n");
-        printf("*** TETRIS STACK ***\n");
         printf("1 - Jogar peça (remover)\n");
         printf("2 - Adicionar nova peça\n");
         printf("3 - Mostrar fila\n");
@@ -161,11 +161,13 @@ void exibeMenu(Fila *f)
         {
         case 1: // Jogar peça (remover)
             remover(f, &pecaRemovida);
+            mostrarFila(f);
             break;
 
         case 2: // Adicionar nova peça (inserir)
         {
             inserir(f, gerarPeca(&id));
+            mostrarFila(f);
         }
         break;
 
